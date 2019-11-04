@@ -1,0 +1,22 @@
+登录 login
+方法：post
+{
+  "username": "jgq03",
+  "password": "jgq003"
+}
+返回结果：
+正确
+  {
+    "code": 200,
+    "error": null,
+    "data": {
+      "username": "jgq03",
+      "logintime": "2019.4.1"
+    }
+  }
+错误
+  {
+    "code": 201,
+    "error": "error！",
+    "data": null
+  }

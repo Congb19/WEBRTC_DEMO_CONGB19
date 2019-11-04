@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>后台管理</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href=''>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Cache-Control" content="no-store"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--IOS设备上禁止将数字识别为可点击的tel link-->
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href='../static/css/common.css'>
+    <link rel="stylesheet" type="text/css" href='../static/css/view-default.css'>
+    <link rel="stylesheet" type="text/css" href="../static/_public/flatpickr.min.css"/>
+
+    <script src="../static/js/vendor/jquery-3.2.1.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>-->
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap-table.min.css">
+    <script src="../static/js/vendor/bootstrap-table.min.js"></script>
+    <script src="../static/js/vendor/bootstrap-table-zh-CN.min.js"></script>
+
+
+    <script src="../static/js/vendor/echarts.common.min.js"></script>
+
+
+
+    <!--[if lt IE 9]>
+    <script src="../static/_public/html5.js"></script>
+    <![endif]-->
+
+
+</head>
+<body>
+<div class="card-space card-space3">
+    <div class="card-title">查询条件</div>
+    <div class="card-container">
+        <div class="search-item">
+            <label class="input-label">部门：</label>
+            <div class="select-dropdown search-input" data-do="select" data-val="0">
+                <div class="text-warp selected-value"></div>
+                <input type="hidden" name="selectValue" value="0"/>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item text-warp" data-value="0">上城区人力社保局</li>
+                    <li class="dropdown-item text-warp" data-value="1">上城区</li>
+                    <li class="dropdown-item text-warp" data-value="2">上城区</li>
+                    <li class="dropdown-item text-warp" data-value="3">上城区</li>
+                </ul>
+            </div>
+        </div>
+        <div class="search-item">
+            <label class="input-label">查询日期：</label>
+            <input type="text" class="search-input" data-do="timepick"/>
+        </div>
+        <div class="search-item">
+            <label class="input-label">地区：</label>
+            <div class="select-dropdown search-input" data-do="select" data-val="0">
+                <div class="text-warp selected-value"></div>
+                <input type="hidden" name="selectValue" value="0"/>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item text-warp" data-value="0">上城区</li>
+                    <li class="dropdown-item text-warp" data-value="1">上城区</li>
+                    <li class="dropdown-item text-warp" data-value="2">上城区</li>
+                    <li class="dropdown-item text-warp" data-value="3">上城区</li>
+                </ul>
+            </div>
+        </div>
+        <div class="search-item" style="position: absolute; float: right">
+            <button type="button" class="btn btn-primary" style="position: absolute; float: right">查询</button>
+        </div>
+    </div>
+</div>
+<div class="card-space">
+    <div class="card-title">信息汇总</div>
+    <div class="card-container">
+        <div id="mytab"></div>
+    </div>
+</div>
+
+<div class="modal fade bs-similar-modal-lg" id="simi" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="modal-title" style="font-size: 28px; margin: 20px; font-style: italic">相似事件</div>
+                <!--<h3 class="modal-title" id="myModalLabel">相似事件！</h3>-->
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <!--<caption>相似事件有：</caption>-->
+                    <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>类型</th>
+                        <th>信件内容</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="line1">
+                        <td>2019-04-05</td>
+                        <td>咨询</td>
+                        <td>您好，我之前在重庆工作，在重庆交了两年的社保，从6月份开始要在杭州交社保，我想把重庆的社保转到杭州合并到一起，请问：
+                            1.需要什么材料？
+                            2.办理的流程是怎样的？
+                            感谢您的查看，盼复。</td>
+                        <td><a class='btn btn-xs btn-danger' id="sendback1" title='退回'><span class='glyphicon glyphicon-remove'></span></a></td>
+                    </tr>
+                    <tr id="line2">
+                        <td>2019-04-05</td>
+                        <td>咨询</td>
+                        <td>你好。我在海宁缴社保，现在在杭州上班。想把社保转入杭州，需要什么材料。</td>
+                        <td><a class='btn btn-xs btn-danger' id="sendback2" title='退回'><span class='glyphicon glyphicon-remove'></span></a></td>
+                    </tr>
+                    <!--<tr id="line3" >-->
+                        <!--<td>2019-04-05</td>-->
+                        <!--<td>无效信息</td>-->
+                        <!--<td>我有个罚款10000元</td>-->
+                        <!--<td><a class='btn btn-xs btn-danger' id="sendback3" title='退回'><span class='glyphicon glyphicon-remove'></span></a></td>-->
+                    <!--</tr>-->
+                    <!--<tr id="line4" >-->
+                        <!--<td>2019-04-03</td>-->
+                        <!--<td>投诉</td>-->
+                        <!--<td>杭州一桶金服务有限公司合同诈骗假标自融，******金融办不作为，成立的委员会也被控股人吴新军维稳</td>-->
+                        <!--<td><a class='btn btn-xs btn-danger' id="sendback4" title='退回'><span class='glyphicon glyphicon-remove'></span></a></td>-->
+                    <!--</tr>-->
+                    </tbody>
+                </table>
+            </div>
+            <div style="margin: 30px;">
+                <input type="text" class="form-control" id="name" placeholder="请输入回复信息" style="height: 60px">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" id="1-reply" class="btn btn-primary" >一键回复</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" id="exam" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="modal-title" style="font-size: 20px; margin: 20px">内容详情：</div>
+                <div style="font-size: 16px; margin: 20px;">您好，我之前在重庆工作，在重庆交了两年的社保，从6月份开始要在杭州交社保，我想把重庆的社保转到杭州合并到一起，请问：
+                    1.需要什么材料？
+                    2.办理的流程是怎样的？
+                    感谢您的查看，盼复。</div>
+                <div style="font-size: 16px; margin: 20px;">时间：2019.4.5  &nbsp; 类型：询问  命名实体：重庆 杭州 关键词：社保</div>
+                <div class="modal-title" style="font-size: 20px; margin: 20px">处理信息：</div>
+                <div style="font-size: 16px; margin: 20px;">郭女士，你好，你咨询的外地社保转入的相关问题，我工作人员已经与你联系，告知你待6月份杭州市参保后，凭身份证和重庆参保凭证至就近社保经办机构办理。感谢对我们工作的支持和理解。</div>
+                <div style="font-size: 16px; margin: 20px;">处理时间：2019.4.5</div>
+            </div>
+            <!--<div class="modal-body">-->
+                <!--<div class="modal-title" style="font-size: 20px; margin: 20px;">命名实体：</div>-->
+                <!--<div style="font-size: 16px; margin: 20px" > 一桶金服务有限公司 &nbsp;&nbsp;杭州 &nbsp;&nbsp; 金融办 &nbsp;&nbsp; 委员会 &nbsp;&nbsp; </div>-->
+                <!--<div class="modal-title" style="font-size: 20px; margin: 20px;">关键词：</div>-->
+                <!--<div style="font-size: 16px; margin: 20px" > 假标 &nbsp;&nbsp;合同诈骗 &nbsp;&nbsp; </div>-->
+            <!--</div>8-->
+
+            <div style="margin: 30px;">
+                <!--&lt;!&ndash;xialaikuang&ndash;&gt;-->
+                <!--<div>-->
+                    <!--<ul class="nav navbar-nav">-->
+                        <!--<li class="dropdown">-->
+                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
+                                <!--社会保障-->
+                                <!--<b class="caret"></b>-->
+                            <!--</a>-->
+                            <!--<ul class="dropdown-menu">-->
+                                <!--<li><a href="#">jmeter</a></li>-->
+                                <!--<li><a href="#">EJB</a></li>-->
+                                <!--<li><a href="#">Jasper Report</a></li>-->
+                                <!--<li class="divider"></li>-->
+                                <!--<li><a href="#">分离的链接</a></li>-->
+                                <!--<li class="divider"></li>-->
+                                <!--<li><a href="#">另一个分离的链接</a></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                    <!--<button type="button" id="return" class="btn btn-danger" >退回</button>-->
+                <!--</div>-->
+                <!--<input type="text" class="form-control" id="name2" placeholder="请输入回复信息" style="height: 60px">-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <!--<button type="button" id="reply" class="btn btn-primary" >回复</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../static/js/maintable.js"></script>
+<!--<script type='text/javascript' src='../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>-->
+<script type='text/javascript' src='../static/_public/jquery.form.js' charset='utf-8'></script>
+<script type='text/javascript' src='../static/_public/flatpickr.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../static/js/common.js' charset='utf-8'></script>
+<script type='text/javascript' src='../static/js/view-default.js' charset='utf-8'></script>
+<script type="text/javascript">
+    $(function(){
+        $("#1-reply").click(function () {
+            alert("成功！");
+        })
+
+        $("#reply").click(function () {
+            alert("成功！");
+        })
+
+        $("#sendback1").click(function () {
+            $("#line1").remove();
+        })
+
+        $("#sendback2").click(function () {
+            $("#line2").remove();
+        })
+
+        $("#sendback3").click(function () {
+            $("#line3").remove();
+        })
+
+        module.messageCallBack.getInfo = function(){
+            console.log(this);
+        }
+    });
+</script>
+
+</body>
+</html>
