@@ -24,7 +24,7 @@ html,body {
 	display: inline-block;
 	width: 250px;
 	height: 100%;
-	background: url(../images/logofly.png) no-repeat 16px center;
+	background: url(../images/logo19.png) no-repeat 16px center;
 }
 .main-menus {
 	position: fixed;
@@ -333,7 +333,7 @@ html,body {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: url(../images/tab/no-tab.png) no-repeat center #ecf1f5;
+	background: url(../images/tab/no-tab3.png) no-repeat center #ecf1f5;
 	background-size: auto 90%;
 }
 .main-container .main-pages .main-page-item {
@@ -344,8 +344,8 @@ html,body {
 	bottom: 0;
 	background-color: #ecf1f5;
 	z-index: 0;
-	transform: translateY(200px);
-	-webkit-transform: translateY(200px);
+	/*transform: translateY(200px);*/
+	/*-webkit-transform: translateY(200px);*/
 	opacity: 0;
 	transition: transform .6s,opacity .6s;
 	-webkit-transition: -webkit-transform .6s,opacity .6s;
