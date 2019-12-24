@@ -235,6 +235,7 @@
                 document.getElementById('info').textContent = '请给自己取个昵称吧！)';
                 document.getElementById('nickWrapper').style.display = 'block';
                 document.getElementById('nicknameInput').focus();
+                console.log("connected");
             });
             //回车键登录
             document.getElementById('nicknameInput').addEventListener('keyup', function(e) {
@@ -351,29 +352,29 @@
             });
 
 
-
-            //表情
-            this._initialEmoji();
-            document.getElementById('emoji').addEventListener('click', function(e) {
-                var emojiwrapper = document.getElementById('emojiWrapper');
-                emojiwrapper.style.display = 'block';
-                e.stopPropagation();
-            }, false);
-            document.body.addEventListener('click', function(e) {
-                var emojiwrapper = document.getElementById('emojiWrapper');
-                if (e.target != emojiwrapper) {
-                    emojiwrapper.style.display = 'none';
-                };
-            });
-            document.getElementById('emojiWrapper').addEventListener('click', function(e) {
-                //获取被点击的表情
-                var target = e.target;
-                if (target.nodeName.toLowerCase() == 'img') {
-                    var messageInput = document.getElementById('messageInput');
-                    messageInput.focus();
-                    messageInput.value = messageInput.value + '[emoji:' + target.title + ']';
-                };
-            }, false);
+            //
+            // //表情
+            // this._initialEmoji();
+            // document.getElementById('emoji').addEventListener('click', function(e) {
+            //     var emojiwrapper = document.getElementById('emojiWrapper');
+            //     emojiwrapper.style.display = 'block';
+            //     e.stopPropagation();
+            // }, false);
+            // document.body.addEventListener('click', function(e) {
+            //     var emojiwrapper = document.getElementById('emojiWrapper');
+            //     if (e.target != emojiwrapper) {
+            //         emojiwrapper.style.display = 'none';
+            //     };
+            // });
+            // document.getElementById('emojiWrapper').addEventListener('click', function(e) {
+            //     //获取被点击的表情
+            //     var target = e.target;
+            //     if (target.nodeName.toLowerCase() == 'img') {
+            //         var messageInput = document.getElementById('messageInput');
+            //         messageInput.focus();
+            //         messageInput.value = messageInput.value + '[emoji:' + target.title + ']';
+            //     };
+            // }, false);
 
         },
 

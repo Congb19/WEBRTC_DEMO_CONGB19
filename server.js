@@ -8,13 +8,42 @@ var express = require('express'),
     server = require('http').createServer(app),
     io = require('socket.io').listen(server),
     users=[];//保存所有在线用户的昵称
+
+var bodyParser = require("body-parser");//获取post请求参数
 app.use('/', express.static(__dirname));
+
+
+
+app.use(bodyParser.json());//处理以json格式的提交
+app.use(bodyParser.urlencoded({//处理以form表单的提交
+    extended: true
+}));
+//路由
+app.get("/index.html", function(req, res){//这里res和req对象是由express封装过的了
+    res.send(`<p>
+				my first express！
+			</p>`);
+});
+app.post("/main2", function(req, res){
+    //alert(req.body);//请求的参数对象
+    console.log(req.body);
+    res.json({//给前端返回json格式的数据
+        code: 0,
+        msg: "登录成功"
+    })
+});
+
+
+
+
+
+
+
 
 var SkyRTC = require('skyrtc').listen(server);
 var path = require("path");
 
 server.listen(8080);
-
 
 //socket部分
 io.on('connection', function(socket) {

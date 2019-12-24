@@ -27,6 +27,7 @@
     </div>
 </div>
 
+
 <script src="../static/js/SkyRTC-client.js"></script>
 
 <script type='text/javascript' src='../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
@@ -140,6 +141,7 @@
             video.parentNode.removeChild(video);
         }
     });
+
     //接收到文字信息
     rtc.on('data_channel_message', function(channel, socketId, message){
         var p = document.createElement("p");

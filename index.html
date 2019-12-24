@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>FLY</title>
+    <title>登录</title>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href=''>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -13,90 +13,177 @@
     <meta content="telephone=no" name="format-detection">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" type="text/css" href='FLY_new/static/css/common.css'>
-    <link rel="stylesheet" type="text/css" href='FLY_new/static/css/base.css'>
+
+    <link rel="stylesheet" type="text/css" href="FLY_new/static/_public/swiper-3.4.2.min.css"/>
+    <link rel="stylesheet" type="text/css" href='FLY_new/static/css/login.css'>
 	<script src="FLY_new/static/js/vendor/jquery-3.2.1.min.js"></script>
+
+	<!--[if lt IE 9]>
+	<script src="/static/_public/html5.js"></script>
+    <![endif]-->
+
 </head>
-<body>
-
-<nav class="navbar">
-	<div class="header-logo">
-		<span></span>
-		<a class="userinf" id="usn">林英琮</a>&nbsp;
-		<div class="userinf logout" id="logout">登出</div>
-	</div>
-</nav>
-
-<div class="main-menus no-select" id="mainMenus">
-	<div class="main-menus-bg"></div>
-	<div class="menu-controll" id="menuControll"><span class="iconfont icon-tubiaozhizuomoban"></span></div>
-
-	<div class="menu-item-1 no-collapse" data-click="loadtab" data-url="FLY_new/views/main.html" data-title="首页">
-		<span class="iconfont icon-quanxianshezhi"></span><span class="menu-item-title">首页</span>
-	</div>
-
-	<div class="menu-item-1 has-collapse" data-click="collapse" data-target="#menu1" data-parent="#mainMenus">
-		<span class="iconfont icon-tubiaozhizuomoban-copy"></span><span class="menu-item-title">实验2单个功能</span>
-	</div>
-	<div id="menu1" class="menus-space">
-		<div class="menu-item-2" data-click="loadtab" data-url="FLY_new/views/Ex2_chat.html" data-title="聊天">
-			<span class="iconfont icon-zhanghao"></span>聊天
+<body class="no-select">
+	<header class="nav-header">
+		<div class="container">
+			<i class="logo-space"></i>
+			<div class="title-space">
+				<p class="nav-title-cn">投诉线索智能筛查系统</p>
+				<p class="nav-title-en">FLY VISION</p>
+			</div>
 		</div>
-		<div class="menu-item-2" data-click="loadtab" data-url="FLY_new/views/Ex2_camera.html" data-title="获取视频流">
-			<span class="iconfont icon-zhanghao"></span>获取视频流
+	</header>
+	<div class="swiper-container" id="mySwiper">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide" style="background-image: url(FLY_new/static/images/login/bg_01.png);">
+				<div class="container">
+					<div class="slider-space" style="margin-top: -180px;">
+						<div class="slider1-title-space">
+							<p class="slider1-title">科技为人服务，数据利民利己</p>
+						</div>
+						<p class="slider1-subtitle">以AI+为核心，打造省时高效的筛查服务</p>
+						<!--<div class="qrcode-space">-->
+							<!--<span class="qrcode-title">微信公众号<br/>关注小视，开启智慧生活</span>-->
+						<!--</div>-->
+					</div>
+				</div>
+			</div>
+			<div class="swiper-slide" style="background-image: url(FLY_new/static/images/login/bg_02.png);">
+				<div class="container">
+					<div class="slider-space" style="margin-top: -200px;">
+						<div class="slider2-title-space">
+							<div class="slider2-title">
+								<span>核心创新亮点</span>
+							</div>
+						</div>
+						<div class="slider2-plist">
+							<div class="slider2-plist-item item-1" style="background-image: url(FLY_new/static/images/login/iconbg_01.png);">
+								<div class="plist-item-img" style="background-image: url(FLY_new/static/images/login/user_01.png);">
+									<span class="plist-item-title">情感分析</span>
+								</div>
+							</div>
+							<div class="slider2-plist-item item-2" style="background-image: url(FLY_new/static/images/login/iconbg_02.png);">
+								<div class="plist-item-img" style="background-image: url(FLY_new/static/images/login/Smile_01.png);">
+									<span class="plist-item-title">无效信息筛查</span>
+								</div>
+							</div>
+							<div class="slider2-plist-item item-3" style="background-image: url(FLY_new/static/images/login/iconbg_03.png);">
+								<div class="plist-item-img" style="background-image: url(FLY_new/static/images/login/rocket_01.png);">
+									<span class="plist-item-title">模型不断训练</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-slide" style="background-image: url(FLY_new/static/images/login/bg_03.png);">
+				<div class="container">
+					<div class="slider-space" style="margin-top: -220px;">
+						<div class="slider3-list">
+							<div class="slider3-item" style="background-image: url(FLY_new/static/images/login/iconbg_04.png);top: 80px;left: 20px;">
+								<div class="slider3-item-img" style="background-image: url(FLY_new/static/images/login/shield.png);top: 40px;left: 70px;"></div>
+								<p class="slider3-item-title" style="left: 59px;bottom: 46px;">安全反爬虫</p>
+							</div>
+							<div class="slider3-item item-center" style="background-image: url(FLY_new/static/images/login/iconbg_05.png);top: 0;left: 300px;">
+								<div class="slider3-item-img" style="background-image: url(FLY_new/static/images/login/gear.png);top: 44px;left: 66px;"></div>
+								<p class="slider3-item-title" style="left: 57px;bottom: 40px;">简洁易用</p>
+							</div>
+							<div class="slider3-item" style="background-image: url(FLY_new/static/images/login/iconbg_06.png);top: 80px;left: 580px;">
+								<div class="slider3-item-img" style="background-image: url(FLY_new/static/images/login/date.png);top: 45px;left: 56px;"></div>
+								<p class="slider3-item-title" style="left: 58px;bottom: 40px;">扩充性良好</p>
+							</div>
+						</div>
+						<div class="slider3-title"></div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="menu-item-2" data-click="loadtab" data-url="FLY_new/views/Ex2_chatroom.html" data-title="Congb19's 聊天室">
-			<span class="iconfont icon-zhanghao"></span>Congb19's 聊天室
+		<div class="swiper-pagination"></div>
+	</div>
+	<div class="login-space">
+		<p class="login-title">登录</p>
+		<div class="input-space">
+			<label for="username" class="input-label" style="background-image: url(FLY_new/static/images/login/USER.png);"></label>
+			<input type="text" id="username" class="user-input" placeholder="用户名"/>
 		</div>
-	</div>
-
-	<!--<div class="menu-item-1 no-collapse" data-click="loadtab" data-url="views/maintable.html" data-title="信息处理">-->
-		<!--<span class="iconfont icon-guize"></span><span class="menu-item-title">信息处理</span>-->
-	<!--</div>-->
-
-	<div class="menu-item-1 has-collapse" data-click="collapse" data-target="#menu2" data-parent="#mainMenus">
-		<span class="iconfont icon-icon-test"></span><span class="menu-item-title">实验3</span>
-	</div>
-	<div id="menu2" class="menus-space">
-		<div class="menu-item-2" data-click="loadtab" data-url="views/maintable.html" data-title="信息汇总">
-			<span class="iconfont icon-xiayou-copy"></span>信息汇总
+		<div class="input-space">
+			<label for="pwd" class="input-label" style="background-image: url(FLY_new/static/images/login/LOCK.png);"></label>
+			<input type="password" id="pwd" class="user-input" placeholder="密码"/>
 		</div>
-		<!--<div class="menu-item-2" data-click="loadtab" data-url="views/maintable2.html" data-title="信息处理">-->
-			<!--<span class="iconfont icon-daiheshi"></span>信息处理-->
-		<!--</div>-->
-		<div class="menu-item-2" data-click="loadtab" data-url="views/maintable3.html" data-title="其他信息">
-			<span class="iconfont icon-lishi"></span>其他信息
+		<div class="login-btn" id="login-button">
+			<div class='spinner'>
+				<div class="bounce-1"></div>
+				<div class="bounce-2"></div>
+			</div>
+			<span class="login-words">立即登录</span>
 		</div>
+		<!--<a href="javascript: void(0);" class="fpwd">忘记密码？</a>-->
 	</div>
+	<footer class="nav-footer">联系我们</footer>
+
+	<script>
+        let usernamet = $("#username");
+        let passwordt = $("#pwd");
+
+        $("#login-button").click(function(e) {
+
+            // $.get("/index.html", function(data){
+            //     alert(data);
+            // });
+
+            e.preventDefault();
+            $.post("http://localhost:8080/main2", {//该ajax请求指向的是后台路由（express.js中的路由）
+                username: $("#username").val(),
+                password: $("#pwd").val()
+            }, function(data){
+                alert(data);
+                console.log(data);
+            });
+            location.href = 'main.html';
 
 
 
-	<div class="menu-item-1 no-collapse" data-click="loadtab" data-url="FLY_new/views/demo-temple.html" data-title="TEST">
-		<span class="iconfont icon-quanxianshezhi"></span><span class="menu-item-title">TEST</span>
-	</div>
-</div>
+        	// // alert("aaa");
+            // let usn = usernamet;
+            // let searchUrl = encodeURI("main.html?searchText=" + searchText);
+            // // location.href = "http://www.w3school.com.cn"
+            // location.href = searchUrl;
 
-<div class="main-container">
-	<div class="main-tabs no-select">
-		<div class="tab-item-space" id="tab-space"></div>
-	</div>
-	<div class="main-pages" id="main-pages"></div>
-</div>
-<!--描述：最后加载js，增加页面相应速度-->
-<script>
-    // $("#logout").click(function () {
-    //     $(location).attr('href', 'login.html');
-    // });
-    // let searchUrl = window.location.href;
-    // let searchData = searchUrl.split("="); //截取 url中的“=”,获得“=”后面的参数
-    // let searchText = decodeURI(searchData[1]); //decodeURI解码
-    // $("#usn").val(searchText);
-</script>
-<!--<script type='text/javascript' src='static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>-->
-<script type='text/javascript' src='FLY_new/static/_public/jquery.form.js' charset='utf-8'></script>
-<script type='text/javascript' src='FLY_new/static/_public/flatpickr.min.js' charset='utf-8'></script>
-<script type='text/javascript' src='FLY_new/static/js/common.js' charset='utf-8'></script>
-<script type='text/javascript' src='FLY_new/static/js/base.js' charset='utf-8'></script>
+			//if (usernamet != 'admin') location.href = 'main.html';
+			//else location.href = 'main.html';
+        });
+
+        // 登陆逻辑
+		// $("#login-button").click(function() {
+		//     if ($.isEmptyObject(usernamet)||$.isEmptyObject(passwordt)) {
+		// 			alert("请完整输入账号/密码！");
+		// 		}
+		//     else {
+        //         $.post("url",  {
+		// 			username: usernamet,
+		// 			password: passwordt,
+		// 		},
+		// 		function(data, status) {
+        //             //测试用alert
+		// 			alert("数据: \n" + data + "\n状态: " + status);
+		// 		});
+        //         if (code == 201) {
+        //             alert("账号/密码错误！请重新输入");
+		// 			$("#username").empty();
+        //             $("#pwd").empty();
+		// 		}
+		// 		else if(code == 200) {
+		// 			let usn = data.username;
+        //             let searchUrl = encodeURI("main.html?searchText=" + searchText);
+        //             location.href = searchUrl;
+		// 		}
+		// 	}
+		// });
+	</script>
+
+<!--<script src='static/_public/jquery-2.1.1.min.js' type='text/javascript' charset='utf-8'></script>-->
+<script src="FLY_new/static/_public/swiper-3.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="FLY_new/static/js/login.js" type="text/javascript" charset="utf-8"></script>
 
 </body>
 </html>

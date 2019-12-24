@@ -23,7 +23,7 @@
 <body>
 <div class="card-space card-space2"  style="overflow:hidden">
     <img src="../static/images/tab/video.png" height="598" width="852"/>
-    <video id="video" autoplay style="position: absolute; left: 50px; top: 50px;"></video>
+    <video id="video" autoplay style="position: absolute; left: 38px; top: 35px;"></video>
 </div>
 <script type='text/javascript' src='../static/_public/jquery-2.1.1.min.js' charset='utf-8'></script>
 <script type='text/javascript' src='../static/js/common.js' charset='utf-8'></script>
@@ -34,7 +34,7 @@
             console.log(this);
         }
     });
-    var constraints = { audio: true, video:  { width: 976, height: 488 } };
+    var constraints = { audio: true, video:  { width: 783, height: 390 } };
 
     navigator.mediaDevices.getUserMedia(constraints)
         .then(function(mediaStream) {
