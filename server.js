@@ -1,23 +1,49 @@
 
-
-
-
 //服务器及页面部分
 var express = require('express'),
     app = express(),
     server = require('http').createServer(app),
     io = require('socket.io').listen(server),
-    users=[];//保存所有在线用户的昵称
-
+users=[];//保存所有在线用户的昵称
+var router = express.Router();
+var db = require("./FLY_new/conf/db");
 var bodyParser = require("body-parser");//获取post请求参数
 app.use('/', express.static(__dirname));
-
-
-
 app.use(bodyParser.json());//处理以json格式的提交
 app.use(bodyParser.urlencoded({//处理以form表单的提交
     extended: true
 }));
+// router.get('/', function (req, res, next) {
+//     //查询users表
+//     db.query("SELECT * FROM STUDENT",[],function(results, fields){
+//         console.log(results);
+//
+//         res.render('index', { title: 'Express11' });
+//     })
+// });
+// module.exports = router;
+
+//connect test
+// var mysql      = require('mysql');
+// var connection = mysql.createConnection({
+//     host     : 'localhost',
+//     user     : 'root',
+//     password : 'qwer1234',
+//     database : 'mysql',
+//     port       : 3307
+// });
+// connection.connect();
+// connection.query('SELECT * from student', function(err, data, fields) {
+//     if (err) {
+//         console.log("error! "+err);
+//         return;
+//     };
+//     console.log(data);
+// });
+// connection.end();
+
+
+
 //路由
 app.get("/index.html", function(req, res){//这里res和req对象是由express封装过的了
     res.send(`<p>
@@ -32,6 +58,23 @@ app.post("/main2", function(req, res){
         msg: "登录成功"
     })
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -122,12 +165,5 @@ SkyRTC.rtc.on('answer', function(socket, answer) {
 SkyRTC.rtc.on('error', function(error) {
     console.log("发生错误：" + error.message);
 });
-
-
-
-
-
-
-
 
 console.log('server started');
