@@ -7,6 +7,15 @@ $(document).ready(function(){
     let name1=document.querySelector("#name1");
     let renqi1=document.querySelector("#renqi1");
     let head1=document.querySelector("#head1");
+    let name2=document.querySelector("#name2");
+    let renqi2=document.querySelector("#renqi2");
+    let head2=document.querySelector("#head2");
+    let name3=document.querySelector("#name3");
+    let renqi3=document.querySelector("#renqi3");
+    let head3=document.querySelector("#head3");
+    let name4=document.querySelector("#name4");
+    let renqi4=document.querySelector("#renqi4");
+    let head4=document.querySelector("#head4");
 
     $.get("/index", function (results, status) {
         console.log(status);
@@ -16,9 +25,9 @@ $(document).ready(function(){
         let strdatas = new Array(6);
         for(let i=0; i<datas.length; i++) {
             strdatas[i] = {
-                renqi: JSON.stringify(datas[i].renqi),
-                name: JSON.stringify(datas[i].name),
-                head: JSON.stringify(datas[i].head)
+                renqi: datas[i].renqi,
+                name: datas[i].name,
+                head: datas[i].head
             }
         }
         for(let i=0; i<datas.length; i++) {
@@ -26,16 +35,18 @@ $(document).ready(function(){
             console.log("name: "+strdatas[i].name);
             console.log("head: "+strdatas[i].head);
         }
-
-        console.log(head1.src);
-        head1.src = "";
-        console.log(head1.src);
-
         name1.innerHTML=strdatas[0].name.toString();
         renqi1.innerHTML=strdatas[0].renqi;
         head1.src=strdatas[0].head;
-
-        console.log(head1.src);
+        name2.innerHTML=strdatas[1].name.toString();
+        renqi2.innerHTML=strdatas[1].renqi;
+        head2.src=strdatas[1].head;
+        name3.innerHTML=strdatas[2].name.toString();
+        renqi3.innerHTML=strdatas[2].renqi;
+        head3.src=strdatas[2].head;
+        name4.innerHTML=strdatas[3].name.toString();
+        renqi4.innerHTML=strdatas[3].renqi;
+        head4.src=strdatas[3].head;
 
     })
 
