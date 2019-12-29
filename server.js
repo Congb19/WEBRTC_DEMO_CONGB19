@@ -42,13 +42,41 @@ app.use(bodyParser.urlencoded({//处理以form表单的提交
 // });
 // connection.end();
 
-
+function Result ({data={}}){
+    this.data=data;
+}
 
 //路由
-app.get("/index.html", function(req, res){//这里res和req对象是由express封装过的了
-    res.send(`<p>
-				my first express！
-			</p>`);
+app.get("/index", function(req, res){//这里res和req对象是由express封装过的了
+    console.log(req.body);
+    var mysql      = require('mysql');
+    var connection = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'root',
+        password : 'qwer1234',
+        database : 'mysql',
+        port     : 3307
+    });
+    let name1, renqi1, head1;
+    connection.connect();
+    let que = "SELECT * from lives";
+    connection.query('SELECT * from lives', function(err, results, fields) {
+        if (err) {
+            console.log("error! "+err);
+            return;
+        };
+        console.log(results);
+        console.log(typeof (results));
+        console.log(JSON.stringify(results));
+
+        console.log(name1);
+
+        res.json(//给前端返回json格式的数据
+            new Result({data: results})
+        );
+    });
+    connection.end();
+
 });
 app.post("/main2", function(req, res){
     //alert(req.body);//请求的参数对象

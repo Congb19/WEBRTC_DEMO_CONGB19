@@ -28,8 +28,8 @@
 		<div class="container">
 			<i class="logo-space"></i>
 			<div class="title-space">
-				<p class="nav-title-cn">投诉线索智能筛查系统</p>
-				<p class="nav-title-en">FLY VISION</p>
+				<p class="nav-title-cn">数字媒体资源管理网站</p>
+				<p class="nav-title-en">Congb19 VISION</p>
 			</div>
 		</div>
 	</header>
@@ -41,7 +41,7 @@
 						<div class="slider1-title-space">
 							<p class="slider1-title">啦啦啦 啦啦啦</p>
 						</div>
-						<p class="slider1-subtitle">以娱乐大众为目标，打造一个帅气的娱乐分享网站</p>
+						<p class="slider1-subtitle">以期末作业为目标，打造一个帅气的娱乐分享网站</p>
 						<!--<div class="qrcode-space">-->
 							<!--<span class="qrcode-title">微信公众号<br/>关注小视，开启智慧生活</span>-->
 						<!--</div>-->
@@ -132,7 +132,7 @@
             // });
 
             e.preventDefault();
-            $.post("http://localhost:8080/main2", {//该ajax请求指向的是后台路由（express.js中的路由）
+            $.post("/main2", {//该ajax请求指向的是后台路由（express.js中的路由）
                 username: $("#username").val(),
                 password: $("#pwd").val()
             }, function(data){
