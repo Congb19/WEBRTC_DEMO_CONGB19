@@ -200,17 +200,31 @@
 
 
 <script src="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<!--<script src="../../node_modules/socket.io/lib/socket.js"></script>-->
 <script src="../../node_modules/socket.io-client/dist/socket.io.js"></script>
 
-<script src="../../node_modules/socket.io/lib/socket.js"></script>
 <!--hichat-->
 <script>
-    function Color(){
-        this.r = Math.floor(Math.random()*255);
-        this.g = Math.floor(Math.random()*255);
-        this.b = Math.floor(Math.random()*255);
-        this.color = 'rgba('+ this.r +','+ this.g +','+ this.b +',0.8)';
-    }
+    // //服务器及页面部分
+    // var express = require('express'),
+    //     app = express(),
+    //     server = require('http').createServer(app),
+    //     io = require('socket.io').listen(server);
+    // server.listen(8080);
+    //
+    var socket=io.connect(),//与服务器进行连接
+        button=document.getElementById('sendBtn');
+    // button.onclick=function(){
+    //     socket.emit('foo', 'hello');//发送一个名为foo的事件，并且传递一个字符串数据‘hello’
+    // };
+    socket.emit('foo', 'hello');
+
+    // function Color(){
+    //     this.r = Math.floor(Math.random()*255);
+    //     this.g = Math.floor(Math.random()*255);
+    //     this.b = Math.floor(Math.random()*255);
+    //     this.color = 'rgba('+ this.r +','+ this.g +','+ this.b +',0.8)';
+    // }
 
     window.onload = function() {
         //实例并初始化我们的hichat程序
@@ -232,10 +246,9 @@
             //监听socket的connect事件，此事件表示连接已经建立
             this.socket.on('connect', function() {
                 //连接到服务器后，显示昵称输入框
-                document.getElementById('info').textContent = '请给自己取个昵称吧！)';
+                document.getElementById('info').textContent = 'get yourself a nickname :)';
                 document.getElementById('nickWrapper').style.display = 'block';
                 document.getElementById('nicknameInput').focus();
-                console.log("connected");
             });
             //回车键登录
             document.getElementById('nicknameInput').addEventListener('keyup', function(e) {
@@ -323,6 +336,9 @@
                 that._displayNewMsg(user, msg);
             });
 
+            this.socket.on('newImg', function(user, img) {
+                that._displayImage(user, img);
+            });
 
 
 
@@ -347,34 +363,31 @@
                     reader.readAsDataURL(file);
                 };
             }, false);
-            this.socket.on('newImg', function(user, img) {
-                that._displayImage(user, img);
+
+
+
+            //表情
+            this._initialEmoji();
+            document.getElementById('emoji').addEventListener('click', function(e) {
+                var emojiwrapper = document.getElementById('emojiWrapper');
+                emojiwrapper.style.display = 'block';
+                e.stopPropagation();
+            }, false);
+            document.body.addEventListener('click', function(e) {
+                var emojiwrapper = document.getElementById('emojiWrapper');
+                if (e.target != emojiwrapper) {
+                    emojiwrapper.style.display = 'none';
+                };
             });
-
-
-            //
-            // //表情
-            // this._initialEmoji();
-            // document.getElementById('emoji').addEventListener('click', function(e) {
-            //     var emojiwrapper = document.getElementById('emojiWrapper');
-            //     emojiwrapper.style.display = 'block';
-            //     e.stopPropagation();
-            // }, false);
-            // document.body.addEventListener('click', function(e) {
-            //     var emojiwrapper = document.getElementById('emojiWrapper');
-            //     if (e.target != emojiwrapper) {
-            //         emojiwrapper.style.display = 'none';
-            //     };
-            // });
-            // document.getElementById('emojiWrapper').addEventListener('click', function(e) {
-            //     //获取被点击的表情
-            //     var target = e.target;
-            //     if (target.nodeName.toLowerCase() == 'img') {
-            //         var messageInput = document.getElementById('messageInput');
-            //         messageInput.focus();
-            //         messageInput.value = messageInput.value + '[emoji:' + target.title + ']';
-            //     };
-            // }, false);
+            document.getElementById('emojiWrapper').addEventListener('click', function(e) {
+                //获取被点击的表情
+                var target = e.target;
+                if (target.nodeName.toLowerCase() == 'img') {
+                    var messageInput = document.getElementById('messageInput');
+                    messageInput.focus();
+                    messageInput.value = messageInput.value + '[emoji:' + target.title + ']';
+                };
+            }, false);
 
         },
 

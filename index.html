@@ -136,10 +136,17 @@
                 username: $("#username").val(),
                 password: $("#pwd").val()
             }, function(data){
-                alert(data);
-                console.log(data);
+                // alert(data);
+                // console.log(data);
+                // console.log(data.code);
+				if (data.code===1){
+                    location.href = 'main.html';
+				}
+				else {
+				    alert("登录失败");
+				}
             });
-            location.href = 'main.html';
+            // location.href = 'main.html';
 
 
 
