@@ -33,9 +33,7 @@ $(document).ready(function(){
     let postera16=document.querySelector("#postera16");
     let titlea16=document.querySelector("#titlea16");
     let renqia16=document.querySelector("#renqia16");
-
     let urla11=document.querySelector("#urla11");
-
     //poke
     let nameb1=document.querySelector("#nameb1");
     let renqib1=document.querySelector("#renqib1");
@@ -47,7 +45,7 @@ $(document).ready(function(){
     let renqib3=document.querySelector("#renqib3");
     let headb3=document.querySelector("#headb3");
     let nameb4=document.querySelector("#nameb4");
-    let renqib4=document.querySelector("#renqib4");
+    let renqib4=document.querySelector("#renqib4+");
     let headb4=document.querySelector("#headb4");
     let posterb11=document.querySelector("#posterb11");
     let titleb11=document.querySelector("#titleb11");
@@ -67,8 +65,6 @@ $(document).ready(function(){
     let posterb16=document.querySelector("#posterb16");
     let titleb16=document.querySelector("#titleb16");
     let renqib16=document.querySelector("#renqib16");
-
-
 
     $.get("/index", function (results, status) {
         console.log(status);
@@ -182,5 +178,4 @@ $(document).ready(function(){
         renqib16.innerText=strdatas[5].name.toString();
         posterb16.src=strdatas[5].poster;
     });
-
 });

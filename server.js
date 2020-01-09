@@ -78,7 +78,7 @@ app.get("/index", function(req, res){//这里res和req对象是由express封装�
     connection.end();
 
 });
-app.get("/indexpoke", function(req, res){//这里res和req对象是由express封装过的了
+app.get("/indexpoke", function(req, res){
     console.log(req.body);
     var mysql      = require('mysql');
     var connection = mysql.createConnection({
@@ -96,18 +96,11 @@ app.get("/indexpoke", function(req, res){//这里res和req对象是由express封
             console.log("error! "+err);
             return;
         };
-        console.log(results);
-        console.log(typeof (results));
-        console.log(JSON.stringify(results));
-
-        console.log(name1);
-
         res.json(//给前端返回json格式的数据
             new Result({data: results})
         );
     });
     connection.end();
-
 });
 app.get("/indexduli", function(req, res){//这里res和req对象是由express封装过的了
     console.log(req.body);
@@ -141,9 +134,7 @@ app.get("/indexduli", function(req, res){//这里res和req对象是由express封
 
 });
 app.post("/main2", function(req, res){
-    //alert(req.body);//请求的参数对象
     console.log(req.body.username);
-
     var mysql      = require('mysql');
     var connection = mysql.createConnection({
         host     : 'localhost',
@@ -152,7 +143,6 @@ app.post("/main2", function(req, res){
         database : 'mysql',
         port     : 3307
     });
-    let name1, renqi1, head1;
     connection.connect();
     let que = "SELECT password from users where username="+req.body.username;
     connection.query(que, function(err, results, fields) {
@@ -160,11 +150,8 @@ app.post("/main2", function(req, res){
             console.log("error! "+err);
             return;
         };
-        // console.log(JSON.stringify(results));
         let reqpass = [{"password": req.body.password}];
-        // console.log(JSON.stringify(reqpass));
         let flag = JSON.stringify(results)===JSON.stringify(reqpass);
-        // console.log(flag);
         let code=1;
         if(flag) {
             code=1;
@@ -178,8 +165,6 @@ app.post("/main2", function(req, res){
         })
     });
     connection.end();
-
-
 });
 
 
